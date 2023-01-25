@@ -1,0 +1,17 @@
+    <el-popover
+        placement="top"
+        width="326"
+        v-show="isShowEmoji"
+        :value="true"
+        class="emoji--popover"
+        trigger="click">
+        <VEmojiPicker ref="emoji" @select="selectEmoji" class="emoji"/>
+      </el-popover>
+      
+      mounted () {
+      window.addEventListener('mouseup', e => {
+        if (this.isShowEmoji && !this.$refs.emoji.$el.contains(e.target)) {
+          this.isShowEmoji = false
+        }
+      })
+    },
