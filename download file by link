@@ -1,0 +1,6 @@
+   Кинуть на скачування
+   window.location.href = process.env.BASE_BACKEND + '/' + res.data
+   
+   Відкрити в новій вкладці у старому вікні і перейти
+  const url = process.env.BASE_BACKEND + '/' + res.data
+  window.open(url, '_blank').focus();
