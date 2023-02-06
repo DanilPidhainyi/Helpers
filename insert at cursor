@@ -1,0 +1,25 @@
+methods: {
+      //метод який додає до тексту
+      addVariable (variable) {
+        const variableText = variable === 'space' ? ' ' : `${variable}`;
+        this.insertAtCursor(this.$refs.textarea, variableText);
+      },
+      insertAtCursor (myField, myValue) {
+        // IE support
+        if (document.selection) {
+          myField.focus();
+          let sel = document.selection.createRange();
+          sel.text = myValue;
+        }
+        // MOZILLA and others
+        else if (myField.selectionStart || myField.selectionStart === 0) {
+          const startPos = myField.selectionStart;
+          const endPos = myField.selectionEnd;
+          this.formulaEquation = myField.value.substring(0, startPos) +
+            myValue +
+            myField.value.substring(endPos, myField.value.length);
+        } else {
+          this.formulaEquation += myValue;
+        }
+      }
+    }
