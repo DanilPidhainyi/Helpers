@@ -1,12 +1,12 @@
 export const isCloseBrackets = str => {
-  const brackets = {'(': ')'}
-  const closeBrackets = Object.values(brackets)
+  const brackets = {')': '('}
+  const openBrackets = Object.values(brackets)
   let stack = []
   str.split('').forEach( el => {
-    if (brackets[el]) {
+    if (openBrackets.includes(el)) {
       stack.push(el)
     }
-    if (closeBrackets.includes(el) && stack[stack.length -1] === el) {
+    if (brackets[el] && stack[stack.length -1] === brackets[el]) {
       stack.pop()
     }
   })
