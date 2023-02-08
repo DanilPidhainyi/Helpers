@@ -6,8 +6,12 @@ export const isCloseBrackets = str => {
     if (openBrackets.includes(el)) {
       stack.push(el)
     }
-    if (brackets[el] && stack[stack.length -1] === brackets[el]) {
-      stack.pop()
+    if (brackets[el]) {
+      if (stack[stack.length -1] === brackets[el]) {
+        stack.pop()
+      } else {
+        stack.push(el)
+      }
     }
   })
   return stack.length === 0
