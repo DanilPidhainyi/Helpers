@@ -1,0 +1,6 @@
+sudo netstat -tulpn | grep :6001
+tcp   0    0 127.0.0.1:6001     0.0.0.0:*     LISTEN      12345/python
+
+sudo kill -9 12345
+
+https://logachev.pro/unix-administrirovanie/close-port-linux/
