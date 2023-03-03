@@ -1,0 +1,57 @@
+<VueDraggableResizable
+      :y="y"
+      :x="x"
+      drag-handle=" #draggable"
+      style=" z-index: 1020; height: auto"
+      :resizable=false>
+    <el-popover
+      placement="top"
+      width="479"
+      height="200"
+      popper-class="wrapper"
+      v-model="isVisible"
+      trigger="click">
+      <header class="title">
+        <i id="draggable" class="ti-move draggableIcon"/>
+        <span class="draggable">Create a new item to question library</span>
+        <el-button class="el-icon-close position" size="mini" type="info" @click="clickCancel"/>
+      </header>
+      <body>
+        <span>Name</span>
+        <el-input placeholder="Please input" v-model="name" class="item"></el-input>
+        <span>Description</span>
+        <el-input
+          type="textarea"
+          :autosize="{ minRows: 2, maxRows: 4}"
+          placeholder="Please input"
+          v-model="description"
+          class="item">
+        </el-input>
+        <section class="container">
+          <span>Category</span>
+          <el-select v-model="category" name="" placeholder="Size" value="" class="item">
+            <el-option v-for="(el, index) in categoryList" :key="index" :value="el">{{ el }}</el-option>
+          </el-select>
+        </section>
+        <section class="container">
+          <span>Language</span>
+          <el-select v-model="category" name="" placeholder="Size" value="" class="item">
+            <el-option v-for="(el, index) in categoryList" :key="index" :value="el">{{ el }}</el-option>
+          </el-select>
+        </section>
+        <section class="container">
+          <span>Tags</span>
+          <el-select v-model="category" name="" placeholder="Size" value="" class="item">
+            <el-option v-for="(el, index) in categoryList" :key="index" :value="el">{{ el }}</el-option>
+          </el-select>
+        </section>
+        <section v-if="isSuperAdmin" class="item">
+          <el-checkbox v-model="isCommon">{{ 'common' }}</el-checkbox>
+        </section>
+      </body>
+      <footer style="text-align: right; margin: 0">
+        <el-button type="text" size="medium" @click="clickCancel">{{ $t('views.createForm.consistent.cancelButton' )}}</el-button>
+        <el-button type="primary" size="medium" @click="clickSave">{{$t('common.save')}}</el-button>
+      </footer>
+    </el-popover>
+    </VueDraggableResizable>
