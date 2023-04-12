@@ -1,0 +1,1 @@
+docker run -ti --rm alpine/bombardier -c 1000 -d 60s -l https://utrigg.com/
